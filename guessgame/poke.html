@@ -31,6 +31,8 @@
 
   let frontImage = ''
   let backImage = ''
+  let frontImagesp = ''
+  let backImagesp = ''
 
   // submitボタンを取得
   let guessSubmit = document.querySelector('#guessSubmit');
@@ -65,6 +67,8 @@
 
       frontImage = data.sprites.front_default
       backImage = data.sprites.back_default
+      frontImagesp = data.sprites.front_shiny
+      backImagesp = data.sprites.back_shiny
     })
     .catch(function(error) {
       // エラーが発生した場合はコンソールに出力
@@ -73,12 +77,22 @@
 
     function toggleSurface() {
         count += 1;
-        if(isfront == true){
-            isfront = false;
-            pokemonImage.src = backImage
-        }else {
-            isfront = true;
-            pokemonImage.src = frontImage
+        if(count < 10){
+            if(isfront == true){
+                isfront = false;
+                pokemonImage.src = backImage
+            }else {
+                isfront = true;
+                pokemonImage.src = frontImage
+            }
+        }else{
+            if(isfront == true){
+                isfront = false;
+                pokemonImage.src = backImagesp
+            }else {
+                isfront = true;
+                pokemonImage.src = frontImagesp
+            }
         }
      console.log(count);
   }
