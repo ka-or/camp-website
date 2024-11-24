@@ -77,23 +77,13 @@
 
     function toggleSurface() {
         count += 1;
-        if(count < 10){
-            if(isfront == true){
-                isfront = false;
-                pokemonImage.src = backImage
-            }else {
-                isfront = true;
-                pokemonImage.src = frontImage
+        isfront = !isfront    
+            if(isfront){
+                pokemonImage.src = count < 10 ? backImage : backImagesp
+            }else {     
+                pokemonImage.src = count < 10 ? frontImage : frontImagesp
             }
-        }else{
-            if(isfront == true){
-                isfront = false;
-                pokemonImage.src = backImagesp
-            }else {
-                isfront = true;
-                pokemonImage.src = frontImagesp
-            }
-        }
+
      console.log(count);
   }
 
