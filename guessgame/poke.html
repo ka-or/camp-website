@@ -21,12 +21,16 @@
   <div id="pokemon">
     <h2 id="pokemonName"></h2>
     <img id="pokemonImage" src="">
-    <input type="submit" value="Push" id="guessSubmit">
+    <input type="submit" value="Push" id="reverse">
   </div>
 </main>
 
 <script>
-    let isfront = true;
+  let isfront = true;
+  let count = 0;
+
+  let frontImage = ''
+  let backImage = ''
 
   // submitボタンを取得
   let guessSubmit = document.querySelector('#guessSubmit');
@@ -58,22 +62,28 @@
 
       // ポケモンの画像を表示
       pokemonImage.src = data.sprites.front_default;
+
+      frontImage = data.sprites.front_default
+      backImage = data.sprites.back_default
     })
     .catch(function(error) {
       // エラーが発生した場合はコンソールに出力
       console.error(`エラーが発生しました:${error}`);
     });
 
-    function checkGuess() {
+    function toggleSurface() {
+        count += 1;
         if(isfront == true){
             isfront = false;
+            pokemonImage.src = backImage
         }else {
             isfront = true;
+            pokemonImage.src = frontImage
         }
-     console.log(isfront);
+     console.log(count);
   }
 
-    guessSubmit.addEventListener('click', checkGuess);
+  reverse.addEventListener('click', toggleSurface);
 </script>
 
 </body>
